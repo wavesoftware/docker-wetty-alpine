@@ -1,12 +1,12 @@
 FROM node:10-alpine
-MAINTAINER Sven Fischer <sven@leiderfischer.de>
+LABEL maintainer="Krzysztof Suszynski <krzysztof.suszynski@wavesoftware.pl>"
 
 WORKDIR /src
 
 RUN apk add --no-cache --virtual .build-deps \
   git python make g++ \
   && apk add --no-cache openssh-client \
-  && git clone https://github.com/krishnasrinivas/wetty --branch v1.1.4 /src \
+  && git clone https://github.com/krishnasrinivas/wetty --branch master /src \
   && npm install \
   && apk del .build-deps \
   && adduser -h /src -D term \
